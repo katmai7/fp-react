@@ -1,0 +1,25 @@
+{
+    "plugins": [
+        "babel-plugin-transform-class-properties",
+        "babel-plugin-transform-object-rest-spread",
+        [
+            "babel-plugin-transform-runtime",
+            {
+                "helpers": true,
+                "polyfill": false,
+                "regenerator": true
+            }
+        ]
+    ],
+    "presets": [
+        "babel-preset-react",
+        ["babel-preset-env", {
+            "targets": {
+                "browsers": ["last 2 versions", "ie 10", "safari >= 10"],
+                "uglify": true,
+                "useBuiltIns": true,
+                "modules": false
+            }
+        }]
+    ]
+}
