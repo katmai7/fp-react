@@ -6,7 +6,7 @@
   "module": "dist/f-react.esm.js",
   "browser": "dist/f-react.umd.js",
   "scripts": {
-    "test": "ava",
+    "test": "nyc ava",
     "eslint": "eslint ./src/**/*.js",
     "lint": "npm run eslint",
     "build": "npm run clean && BABEL_ENV=production rollup -c",

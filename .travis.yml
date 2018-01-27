@@ -10,6 +10,7 @@ branches:
 install:
   - npm install -g codecov
   - npm install -g nyc
+  - npm install -g ava
 
 notifications:
   email: false
