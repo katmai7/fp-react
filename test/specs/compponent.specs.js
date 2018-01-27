@@ -151,20 +151,6 @@ test('should call willReceiveProps', t => {
   t.is(instance.state.value, 5);
 });
 
-test('should call shouldUpdate', t => {
-  const component = renderComponent();
-
-  t.true(shouldUpdate.notCalled);
-
-  component.setState({ value: 5 }); // TODO rewrite to button click
-
-  t.true(shouldUpdate.calledOnce);
-
-  // check that shouldUpdate receives previous props/state
-  t.is(suCurrentSelf.props.value, 10);
-  t.is(suCurrentSelf.state.value, 10);
-});
-
 test('should call didUpdate', t => {
   const component = renderComponent(true);
 
