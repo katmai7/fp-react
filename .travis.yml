@@ -14,5 +14,8 @@ install:
 notifications:
   email: false
 
+script:
+  - npm test
+
 after_success:
   - npm run report-coverage
