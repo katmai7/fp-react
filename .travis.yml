@@ -15,4 +15,4 @@ notifications:
   email: false
 
 after_success:
-  - codecov
+  - npm run report-coverage

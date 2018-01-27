@@ -6,12 +6,12 @@
   "module": "dist/f-react.esm.js",
   "browser": "dist/f-react.umd.js",
   "scripts": {
-    "test": "nyc --reporter=lcov --reporter=text ava",
+    "test": "nyc ava",
     "eslint": "eslint ./src/**/*.js",
     "lint": "npm run eslint",
     "build": "npm run clean && BABEL_ENV=production rollup -c",
     "dev": "npm run clean && rollup -c -w",
-    "coverage": "codecov",
+    "report-coverage": "nyc report --reporter=lcov | codecov",
     "clean": "rm -rf dist"
   },
   "repository": {
