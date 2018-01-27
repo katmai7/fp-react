@@ -60,9 +60,9 @@ const handleInc = sinon.spy((e, self, reduce) => {
 const render = sinon.spy((self, handle) => {
   return (
     <div>
-      <button onClick={handle(handleDec)}>-1</button>
+      <button className="dec" onClick={handle(handleDec)}>-1</button>
       {self.state.value}
-      <button onClick={handle(handleInc)}>+1</button>
+      <button className="inc" onClick={handle(handleInc)}>+1</button>
     </div>
   );
 });
@@ -84,8 +84,9 @@ const CDO = {
 
 const TestedComponent = component(CDO);
 
-const renderComponent = () => {
-  return shallow(<TestedComponent
+const renderComponent = (useMount = false) => {
+  const render = useMount ? mount : shallow;
+  return render(<TestedComponent
     value={10}
   />);
 };
@@ -164,7 +165,25 @@ test('should call shouldUpdate', t => {
   t.is(suCurrentSelf.state.value, 10);
 });
 
-test.todo('should call didUpdate');
+test('should call didUpdate', t => {
+  const component = renderComponent(true);
+
+  t.true(didUpdate.notCalled);
+
+  component.find('.inc').simulate('click', {});
+
+  t.true(didUpdate.calledOnce);
+  // check prev props/state
+  t.is(didUpdate.firstCall.args[0].value, 10); // prevProps
+  t.is(didUpdate.firstCall.args[1].value, 10); // prevState
+
+  // check current(updated) props/state
+  const self = didUpdate.firstCall.args[2];
+  t.is(self.props.value, 10);
+  t.is(self.state.value, 11);
+
+  t.is(typeof didUpdate.firstCall.args[3], 'function'); // reduce function
+});
 
 test('should call willUnmount', t => {
   const component = renderComponent();

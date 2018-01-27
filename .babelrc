@@ -11,6 +11,9 @@
                 "uglify": true,
                 "useBuiltIns": true,
                 "modules": false
+            },
+            "development": {
+                "sourceMaps": "inline"
             }
         }]
     ]
