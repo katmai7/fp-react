@@ -11,7 +11,7 @@
     "lint": "npm run eslint",
     "build": "npm run clean && BABEL_ENV=production rollup -c",
     "dev": "npm run clean && rollup -c -w",
-    "report-coverage": "nyc report --reporter=lcov | codecov",
+    "report-coverage": "nyc report --reporter=lcov && codecov",
     "clean": "rm -rf dist"
   },
   "repository": {

@@ -17,10 +17,4 @@ script:
   - npm test
 
 after_success:
-  - ls -la
-  - cd coverage && ls -la
   - npm run report-coverage
-  - ls -la
-  - cd coverage && ls -la
-
-sudo: true
